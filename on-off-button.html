@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On/Off Button</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-button {
+            position: relative;
+            width: 100px;
+            height: 50px;
+            background-color: #ccc;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+            outline: none;
+        }
+
+        .toggle-button.on {
+            background-color: #4CAF50;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 44px;
+            height: 44px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-button.on .toggle-slider {
+            transform: translateX(50px);
+        }
+
+        .status-text {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .status-text.on {
+            color: #4CAF50;
+        }
+
+        .status-text.off {
+            color: #f44336;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>On/Off Switch</h1>
+        <button class="toggle-button" id="toggleBtn" onclick="toggleButton()">
+            <div class="toggle-slider"></div>
+        </button>
+        <div class="status-text off" id="statusText">OFF</div>
+    </div>
+
+    <script>
+        let isOn = false;
+
+        function toggleButton() {
+            const button = document.getElementById('toggleBtn');
+            const statusText = document.getElementById('statusText');
+
+            isOn = !isOn;
+
+            if (isOn) {
+                button.classList.add('on');
+                statusText.textContent = 'ON';
+                statusText.classList.remove('off');
+                statusText.classList.add('on');
+            } else {
+                button.classList.remove('on');
+                statusText.textContent = 'OFF';
+                statusText.classList.remove('on');
+                statusText.classList.add('off');
+            }
+        }
+    </script>
+</body>
+</html>
