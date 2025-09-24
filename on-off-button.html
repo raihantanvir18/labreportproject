@@ -23,36 +23,35 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .toggle-button {
-            position: relative;
-            width: 100px;
-            height: 50px;
-            background-color: #ccc;
-            border-radius: 25px;
+        .push-button {
+            width: 120px;
+            height: 60px;
+            background-color: #f44336;
+            border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-            border: none;
+            transition: all 0.3s ease;
+            border: 3px solid #d32f2f;
             outline: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .toggle-button.on {
-            background-color: #6bd66f;
+        .push-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
-        .toggle-slider {
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 44px;
-            height: 44px;
-            background-color: white;
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        .push-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        .toggle-button.on .toggle-slider {
-            transform: translateX(50px);
+        .push-button.on {
+            background-color: #4CAF50;
+            border-color: #45a049;
         }
 
         .status-text {
@@ -78,9 +77,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>On/Off Switch</h1>
-        <button class="toggle-button" id="toggleBtn" onclick="toggleButton()">
-            <div class="toggle-slider"></div>
+        <h1>On/Off Push Button</h1>
+        <button class="push-button" id="pushBtn" onclick="toggleButton()">
+            OFF
         </button>
         <div class="status-text off" id="statusText">OFF</div>
     </div>
@@ -89,18 +88,20 @@
         let isOn = false;
 
         function toggleButton() {
-            const button = document.getElementById('toggleBtn');
+            const button = document.getElementById('pushBtn');
             const statusText = document.getElementById('statusText');
 
             isOn = !isOn;
 
             if (isOn) {
                 button.classList.add('on');
+                button.textContent = 'ON';
                 statusText.textContent = 'ON';
                 statusText.classList.remove('off');
                 statusText.classList.add('on');
             } else {
                 button.classList.remove('on');
+                button.textContent = 'OFF';
                 statusText.textContent = 'OFF';
                 statusText.classList.remove('on');
                 statusText.classList.add('off');
